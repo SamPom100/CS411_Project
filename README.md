@@ -1,5 +1,5 @@
 # CS411_Project
-Group Project for BU CS411
+Team 3's Group Project for BU CS411
 
 
 
@@ -32,12 +32,6 @@ Group Project for BU CS411
 
 - User Story
 * Give the website a location (Paris), website recommends top (n) things to do, Resturant, Museaum, etc, then user adds their favs to calendar
-
-
-
-
-
-
 
 
 
