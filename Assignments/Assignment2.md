@@ -27,7 +27,7 @@
 ## User Stories for Trip Planner App
 
 ### User Story 1
-“As a user, I want to look up a place and see what to do there”
+> “As a user, I want to look up a place and see what to do there”
 - User opens our web-app 
 - User inputs the place they want to go 
 - Web app recommends checks backend server to see if that place has been searched before 
@@ -45,11 +45,12 @@ If YES then
 - Gets data from backend server
 Displays results to user
 
-
-
+&nbsp;
+&nbsp;
+&nbsp;
 
 ### User Story 2
-“As a user, I want to link any travel plans to my calendar”
+> “As a user, I want to link any travel plans to my calendar”
 - User opens our web-app
 - User login into their profile
 - User inputs locations they want to go
@@ -61,6 +62,27 @@ If the user is interested
 - ADD event to user’s preferred calendar (google calendar)
 Else:
 - Show more options
+
+&nbsp;
+&nbsp;
+&nbsp;
+
+### User Story 3: 
+> “As a user I want to be able to add people to my travel plans“
+- User opens our web-app
+- User login into their profile
+- User finds their booking in their profile 
+- User has the option to add people to their plans 
+- User adds peoples emails to share trip plans 
+
+If person wants to accept invite: 
+
+- They receive an email with an invitation to accept 
+- They accept the invitation and are directed to web-app 
+- They can view travel plans 
+
+If person does not want to accept invitation
+- They decline invitation to accept 
 
 
 
