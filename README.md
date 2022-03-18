@@ -12,7 +12,7 @@ Team 3's Group Project for BU CS411
 
 ## Project Requirements
 
-- Use 2 API's
+- Use 2 API's.
 - Integrate a database (firebase)
 - Use 3rd party auth (Google / Apple)
 - De-coupled front-end and back-end
