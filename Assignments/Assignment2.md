@@ -1,5 +1,7 @@
 # CS411 Lab Team Assignment 2
 
+https://docs.google.com/document/d/1bCQtv3H0S7zDGbpG-YgipvVEgwPDY7vqLpmsI-Vufls/edit
+
 ## Requirements
 
 - 5 user stories
