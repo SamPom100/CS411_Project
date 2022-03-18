@@ -89,13 +89,32 @@ If person does not want to accept invitation
 &nbsp;
 
 ### User Story 5: Unhappy Ones
+
 > “As a user, I won’t be able to make reservations through one site”
 
-> “As a user, I won’t be able to compare the price of different hotels, and also compare the price for the same hotel within different dates”
+- User opens our web-app
+- User logs into their profile
+- User enters their desired location
+- User enters where they want to live and what they want to do
+- User get different URL for reservation
+- User needs to click the URL and jump to different websites in order to make reservations.
 
 > “As a user, I won’t be able to compare the price if I’m the member of one hotel and not the other”
 
+- User opens our web-app
+- User logs into their profile
+- User enters their desired location
+- User enters where they want to live and what they want to do
+- User gets the price for all the flights, hotels and activities without knowing if they are the member or not.
+
 > “As a user, I won’t be able to change the reservation automatically, if there is a lower price pops up”
+
+- User opens our web-app
+- User logs into their profile
+- User enters their desired location
+- User enters where they want to live and what they want to do
+- User make the reservation through the external 
+
 
 &nbsp;
 &nbsp;
@@ -104,5 +123,11 @@ If person does not want to accept invitation
 ### User Story 6
 > “As a user, I want to be able to filter my search better to select the correct desired destination”
 User opens our web-app
+- User opens our web-app
+- User logs into their profile
+- User enters their desired location
+- If the name of the location entered has multiple destinations:
+- More context for the location (the state and country) is shown
+
 
 
