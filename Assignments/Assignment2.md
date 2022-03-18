@@ -21,3 +21,12 @@
 - Informal, general explanation of a software feature
 
 - Further converted into use cases, then formalized requirements
+
+
+
+## User Stories for Trip Planner App
+
+### User Story 1
+- User opens our web-app
+- User inputs the place they want to go
+- Web app recommends checks backend 
