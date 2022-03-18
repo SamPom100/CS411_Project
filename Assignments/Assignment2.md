@@ -29,4 +29,5 @@
 ### User Story 1
 - User opens our web-app
 - User inputs the place they want to go
-- Web app recommends checks backend 
+- Web app recommends checks backend server to see if that place has been searched before
+- If NOT, then it checks 
