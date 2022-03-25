@@ -3,10 +3,11 @@ Team 3's Group Project for BU CS411
 
 ## Team Progress
 
-| Assignment    |     Status    |  
-| ------------- |:-------------:| 
-| 1             |  ✅           |
-| 2             |  in progress  |
+| Assignment    |     Status    |  Description    | 
+| ------------- |:-------------:| :-------------: | 
+| 1             |  ✅           |   Project Ideas  | 
+| 2             |  ✅           |    User Stories  | 
+| 3             |  in progress  |  Pick a Framework   | 
 
 
 
