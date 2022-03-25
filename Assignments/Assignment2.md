@@ -29,7 +29,7 @@ https://docs.google.com/document/d/1bCQtv3H0S7zDGbpG-YgipvVEgwPDY7vqLpmsI-Vufls/
 # User Stories for Trip Planner App
 
 ## User Story 1
-“As a user, I want to look up a place and see what to do there”
+“As a user, I want to be able to select and find my desired trip location on the application”
 
 ### Happy Path:
 - User opens our web-app 
