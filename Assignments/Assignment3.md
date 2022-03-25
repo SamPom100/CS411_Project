@@ -1,6 +1,8 @@
 # Assignment 3
 Application Prototype.
 Demo some API calls.
+Clear de-coupling of architecture
+Demo ability to send information from front-end to back-end via API 
 
 
 ## Back-end Framework
