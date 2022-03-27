@@ -142,12 +142,19 @@ Our site cannot monitor the reservation, so if there is a better price pop up, t
 &nbsp;
 
 ## User Story 6:
-“As a user, I want to be able to filter my search better to select the correct desired destination”
-User opens our web-app
-User logs into their profile
-User enters their desired location
-If the name of the location entered has multiple destinations:
-More context for the location (the state and country) is shown
+Topic sentence: “As a user, I want to be able to filter my search better to select the correct desired destination”
+Happy path:
+  - User opens our web-app
+  - User logs into their profile
+  - User enters their desired location
+  - If the name of the location entered has multiple destinations:
+  - More context for the location (the state and country) is shown
+Unhappy path: 
+  - User opens our web-app
+  - User logs into their profile
+  - User enters their desired location
+  - The web-app does not show enough context making the user select the incorrect destination
+Feature significance: This feature would enable users to enter and select the correct desired locations. For example, if the user's desired location is Miami in Florida, but the the web-app selects another city with the same name like Miami in Ohio, it would be incorrect and thus, having this feature would eliminate any such issues.
 
 
 
