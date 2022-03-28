@@ -63,13 +63,15 @@ This feature is important because users would like to know the weather and stuff
 ## User Story 2: 
 “As a user, I want to link any travel plans to my calendar”
 
-### Happy Path: Ideally the user can link the app to their google calendar and once they choose an activity they like, they can schedule it and add it to their calendar. 
+### Happy Path: 
+Ideally the user can link the app to their google calendar and once they choose an activity they like, they can schedule it and add it to their calendar. 
 
 ### Exceptions: 
 Users cannot find the location they want to visit on the web app therefore they cannot schedule activities to add to their calendar. 
 There are only a couple of activities available but the user does not like any of the possible options. 
 
-### Description of feature: The feature is important because it lets the user see their vacation plans without having to log into the app. The user can just check their calendar for events. 
+### Description of feature:
+The feature is important because it lets the user see their vacation plans without having to log into the app. The user can just check their calendar for events. 
 
 Actions user will perform:
 User opens our web-app
@@ -90,9 +92,14 @@ Show more options
 ## User Story 3: 
 “As a user I want to be able to add people to my travel plans“
 
-### Happy Path: The user will open our web app and login into their profile. They will find their existing booking in their profile and they will have the option to add people to their current plans. They can then add the emails fo the people they to share their plans with. If the person who receives the invite wants to accept it, they can accept the invitation and will be directed to the web application and can then view the travel plans. If the person does not want to accept the invitation they can just decline the invitation and they will not be able to view travel plans. 
-### Exceptions: Issues that can arise with this is that the user could input the incorrect email and the travel plans could not be sent to the correct person. Also depending on the types of packages selected the user may encounter a limit on the number of people they are allowed to share their travel details with. 
-### Description of Feature: This feature is important because it will enable the user to share their plans with their friends and we can have people creating group trips together on the website to making travel planning much easier for people. This is a benefit to people that frequently travel in groups as to not have any gaps in communication with each other. 
+### Happy Path:
+The user will open our web app and login into their profile. They will find their existing booking in their profile and they will have the option to add people to their current plans. They can then add the emails fo the people they to share their plans with. If the person who receives the invite wants to accept it, they can accept the invitation and will be directed to the web application and can then view the travel plans. If the person does not want to accept the invitation they can just decline the invitation and they will not be able to view travel plans. 
+
+### Exceptions:
+Issues that can arise with this is that the user could input the incorrect email and the travel plans could not be sent to the correct person. Also depending on the types of packages selected the user may encounter a limit on the number of people they are allowed to share their travel details with. 
+
+### Description of Feature:
+This feature is important because it will enable the user to share their plans with their friends and we can have people creating group trips together on the website to making travel planning much easier for people. This is a benefit to people that frequently travel in groups as to not have any gaps in communication with each other. 
 
 &nbsp;
 &nbsp;
@@ -101,7 +108,8 @@ Show more options
 ## User Story 4:
 As a user, I would like to be able to select my favorite options from the proposed list of trip ideas, created from the user’s interests input into the application. 
 
-### Happy Path: User opens our web application
+### Happy Path: 
+User opens our web application
 User logins into their profile
 User begins to create a plan for their desired location
 A list of options is created based off the user’s selected interests
