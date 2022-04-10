@@ -16,9 +16,8 @@ mysql.init_app(app)
 #begin code used for location
 conn = mysql.connect()
 cursor = conn.cursor()
-cursor.execute("SELECT city FROM locations WHERE city_id = 2")
+cursor.execute("SELECT city FROM locations")
 city = cursor.fetchall()
-print(city)
 
 #http://127.0.0.1:5000/ the default return value
 @app.route("/")
@@ -49,35 +48,39 @@ def get_weather():
 
         # Sending HTTP request
     response = requests.get(url)
-
-    if request.method == 'POST':
         
-        # checking the status code of the request
-        if response.status_code == 200:
+    # checking the status code of the request
+    if response.status_code == 200:
                 
-            # retrieving data in the json format
-            data = response.json()
+        # retrieving data in the json format
+        data = response.json()
 
-            # take the main dict block
-            main = data['main']
+        # take the main dict block
+        main = data["main"]
             
-            # getting city
-            city = main['name']
+        # getting city
+        city = data["name"]
             
-            # getting temperature
-            temperature = main['temp']
+        # getting temperature
+        temperature = main["temp"]
             
-            # getting feel like
-            feels_like = main['feels_like']  
+        # getting feel like
+        feels_like = main["feels_like"]  
+
+        response_body = {
+            "City": city,
+            "Temparature": temperature,
+            "Feels Like": feels_like
+            }
            
-            return "City: " + city + "Temperature: " + temperature + "Feels like: " + feels_like
+        return response_body
+    else:
 
-        else:
-
-            # showing the error message
-            return 'HTTP error'
-
-    return requests.get(url).json()
+        # showing the error message
+        response_body = {
+            'HTTP error'
+            }
+        return response_body
         
 
 # run the flask app from Python file running
@@ -85,4 +88,3 @@ if __name__ == "__main__":
     webbrowser.open_new('http://127.0.0.1:5000/')
     app.debug = True
     app.run(port=5000)
-    
