@@ -1,5 +1,5 @@
 # importing modules
-from flask import Flask, jsonify, request, Response
+from flask import Flask,render_template, request, Response, jsonify
 import webbrowser, requests
 from flaskext.mysql import MySQL
 
@@ -16,75 +16,70 @@ mysql.init_app(app)
 #begin code used for location
 conn = mysql.connect()
 cursor = conn.cursor()
-cursor.execute("SELECT city FROM locations")
-city = cursor.fetchall()
 
 #http://127.0.0.1:5000/ the default return value
 @app.route("/")
 def hello_world():
-  return "This is the home page."
+  return render_template('search.html')
 
 # This method executes before any API request
 @app.before_request
 def before_request():
     print('before API request')
 
-# http://127.0.0.1:5000/weather, returns from the "database"
-@app.route('/weather', methods=['GET', 'POST'])
-def get_weather():
-        # API base URL
-    api_url = 'https://api.openweathermap.org/data/2.5/weather?q='
-
-        # City Name
-    cursor = conn.cursor()
-    cursor.execute("SELECT city FROM locations WHERE city = 'boston'")
-    city = 'boston'
+@app.route('/search', methods = ['POST']) 
+def getCity():
+    if request.method == 'POST':
+        #get city name from html form
+        city = request.form.get('city')
+        
+        api_url = 'https://api.openweathermap.org/data/2.5/weather?q='
 
         # Your API key
-    api_key = "9581e38eae9390c82ece6c4d09f43b8f"
+        api_key = "9581e38eae9390c82ece6c4d09f43b8f"
 
         # updating the URL
-    url = api_url + city + "&appid=" + api_key
+        url = api_url + city + "&appid=" + api_key
 
         # Sending HTTP request
-    response = requests.get(url)
+        response = requests.get(url)
         
     # checking the status code of the request
-    if response.status_code == 200:
+        if response.status_code == 200:
                 
         # retrieving data in the json format
-        data = response.json()
+            data = response.json()
 
         # take the main dict block
-        main = data["main"]
+            main = data["main"]
             
         # getting city
-        city = data["name"]
+            city = data["name"]
             
         # getting temperature
-        temperature = main["temp"]
+            temperature = main["temp"]
             
         # getting feel like
-        feels_like = main["feels_like"]  
+            feels_like = main["feels_like"]  
 
-        response_body = {
+            response_body = {
             "City": city,
             "Temparature": temperature,
             "Feels Like": feels_like
             }
            
-        return response_body
-    else:
+            return response_body
+        else:
 
         # showing the error message
-        response_body = {
+            response_body = {
             'HTTP error'
             }
-        return response_body
+            return response_body
         
 
 # run the flask app from Python file running
 if __name__ == "__main__":
     webbrowser.open_new('http://127.0.0.1:5000/')
     app.debug = True
-    app.run(port=5000)
+    app.run()
