@@ -1,7 +1,8 @@
 import requests
 import json
+import api_keys
 
-key = ""
+key = api_keys.getGoogleKey()
 
 def call_weather_api():
   api_url = 'https://api.openweathermap.org/data/2.5/weather?q=BOSTON&APPID=9581e38eae9390c82ece6c4d09f43b8f&units=imperial'
@@ -18,4 +19,7 @@ def call_map_api(location: str):
         returnDict['rating'] = entry['rating']
         returnDict['category'] = entry['types']
         returnList.append(returnDict)
-    return json.dumps(returnList, indent = 4) 
+    return json.dumps(returnList, indent = 4)
+
+
+print(call_map_api("Boston"))
