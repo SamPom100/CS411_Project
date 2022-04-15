@@ -19,4 +19,3 @@ def call_map_api(location: str):
         returnDict['category'] = entry['types']
         returnList.append(returnDict)
     return json.dumps(returnList, indent = 4) 
-
