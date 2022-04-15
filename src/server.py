@@ -1,9 +1,11 @@
 from flask import Flask, jsonify, request
 import webbrowser, requests
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+import methods
+
 
 
 app = Flask(__name__)
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 # simple "database"
 incomes = [
@@ -37,9 +39,8 @@ def add_weather():
 
 # get weather data from OpenWeather
 @app.route('/getWeather')
-def call_weather():
-  api_url = 'https://api.openweathermap.org/data/2.5/weather?q=BOSTON&APPID=9581e38eae9390c82ece6c4d09f43b8f&units=imperial'
-  return requests.get(api_url).json()
+def weather_call():
+  return methods.call_weather_api()
 
 
 # run the flask app from Python file running
