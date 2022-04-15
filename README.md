@@ -7,8 +7,8 @@ Team 3's Group Project for BU CS411
 | ------------- |:-------------:| :-------------: | 
 | 1             |  ✅           |   Project Ideas  | 
 | 2             |  ✅           |    User Stories  | 
-| 3             |  in progress  |  Pick a Framework   | 
-
+| 3             |  ✅           |  Pick a Framework   | 
+| 4             |  in progress          |  Get Stuff Working  | 
 
 
 ## Project Requirements
