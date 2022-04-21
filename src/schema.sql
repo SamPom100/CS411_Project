@@ -20,41 +20,54 @@ CREATE TABLE friends
 	PRIMARY KEY (user_id, friend_id)
 );
 
-CREATE TABLE locations
+CREATE TABLE destination
 (
-	city_id int4 AUTO_INCREMENT,
-	city varchar(255),
+    city_id int4 AUTO_INCREMENT,
+    city varchar(255),
     PRIMARY KEY (city_id)
 );
 
 CREATE TABLE activity
 (
-	act_id int4 AUTO_INCREMENT,
-	activity varchar(255),
+    act_id int4 AUTO_INCREMENT,
+    activity varchar(255),
+    city varchar(255),
+    FOREIGN KEY (city) REFERENCES destination(city),
     PRIMARY KEY (act_id)
 );
 
-CREATE TABLE plan
+CREATE TABLE vacation_plan
 (
-	plan_id int4 AUTO_INCREMENT,
-	user_id int4,
-    city_id int4,
+    plan_id int4 AUTO_INCREMENT,
+    city varchar(255),
+    user_id int4,
     act_id int4,
+    date_created date,
     FOREIGN KEY (user_id) REFERENCES users(user_id),
-    FOREIGN KEY (city_id) REFERENCES locations(city_id),
+    FOREIGN KEY (city) REFERENCES destination(city),
     FOREIGN KEY (act_id) REFERENCES activity(act_id),
     PRIMARY KEY (plan_id)
 );
 
 CREATE TABLE plan_with
 (
-	plan_id int4,
+    plan_id int4,
     user_id int4,
     friend_id int4,
-    FOREIGN KEY (plan_id) REFERENCES plan(plan_id),
+    FOREIGN KEY (plan_id) REFERENCES vacation_plan(plan_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id),
-	FOREIGN KEY (friend_id) REFERENCES users(user_id),
-	PRIMARY KEY (plan_id, user_id, friend_id)
+    FOREIGN KEY (friend_id) REFERENCES users(user_id),
+    PRIMARY KEY (plan_id, user_id, friend_id)
 
 );
 
+CREATE TABLE liked_act
+(
+    act_id int4,
+    user_id int4,
+    plan_id int4,
+    FOREIGN KEY (act_id) REFERENCES activity(act_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (plan_id) REFERENCES vacation_plan(plan_id),
+    PRIMARY KEY (act_id, user_id)
+);
