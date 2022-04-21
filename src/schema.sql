@@ -58,10 +58,3 @@ CREATE TABLE plan_with
 
 );
 
-
-INSERT INTO locations (city) VALUES ('boston');
-INSERT INTO locations (city) VALUES ('newyork');
-INSERT INTO locations (city) VALUES ('london');
-INSERT INTO locations (city) VALUES ('paris');
-INSERT INTO locations (city) VALUES ('madrid');
-
