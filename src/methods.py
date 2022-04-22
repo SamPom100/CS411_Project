@@ -3,9 +3,10 @@ import json
 import api_keys
 
 key = api_keys.getGoogleKey()
+weather_key = api_keys.getWeatherKey()
 
 def call_weather_api():
-  api_url = 'https://api.openweathermap.org/data/2.5/weather?q=BOSTON&APPID=9581e38eae9390c82ece6c4d09f43b8f&units=imperial'
+  api_url = 'https://api.openweathermap.org/data/2.5/weather?q=BOSTON&APPID='+weather_key+'&units=imperial'
   return requests.get(api_url).json()
 
 def call_map_api(location: str):
