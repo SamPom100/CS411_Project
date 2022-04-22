@@ -22,5 +22,15 @@ def call_map_api(location: str):
     return json.dumps(returnList, indent = 4)
 
 
-#TO DO 
-# add travel booking API
+def call_travel_api(location: str):
+    URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+("hotels in "+ location)+"&key="+key
+    response = json.loads(requests.get(URL).text)['results']
+    returnList = []
+    for entry in response:
+        returnDict = {}
+        returnDict['name'] = entry['name']
+        returnDict['address'] = entry['formatted_address']
+        returnDict['rating'] = entry['rating']
+        returnDict['category'] = entry['types']
+        returnList.append(returnDict)
+    return json.dumps(returnList, indent = 4)
