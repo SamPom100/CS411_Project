@@ -26,7 +26,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-         Login Here
+         Weather
         </a>
 
         <button
