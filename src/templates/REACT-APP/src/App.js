@@ -22,7 +22,7 @@ function App() {
         </p>
         <a
           className="App-link"
-          href="localhost" //login page 
+          href="http://localhost:5000/weather" //login page 
           target="_blank"
           rel="noopener noreferrer"
         >
