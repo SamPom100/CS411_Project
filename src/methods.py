@@ -1,16 +1,13 @@
 import requests
 import json
-import api_keys
+from api_keys import google_maps_key, weather_key
 
-key = api_keys.getGoogleKey()
-weather_key = api_keys.getWeatherKey()
-
-def call_weather_api():
-  api_url = 'https://api.openweathermap.org/data/2.5/weather?q=BOSTON&APPID='+weather_key+'&units=imperial'
+def call_weather_api(location: str):
+  api_url = 'https://api.openweathermap.org/data/2.5/weather?q='+location+'&APPID='+weather_key+'&units=imperial'
   return requests.get(api_url).json()
 
 def call_map_api(location: str):
-    URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+("fun things to do in "+ location)+"&key="+key
+    URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+("fun things to do in "+ location)+"&key="+google_maps_key
     response = json.loads(requests.get(URL).text)['results']
     returnList = []
     for entry in response:
@@ -21,11 +18,9 @@ def call_map_api(location: str):
         returnDict['category'] = entry['types']
         returnList.append(returnDict)
     return json.dumps(returnList, indent = 4)
-    
-
 
 def call_travel_api(location: str):
-    URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+("hotels in "+ location)+"&key="+key
+    URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+("hotels in "+ location)+"&key="+google_maps_key
     response = json.loads(requests.get(URL).text)['results']
     returnList = []
     for entry in response:
