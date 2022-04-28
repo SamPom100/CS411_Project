@@ -3,3 +3,4 @@ src/api_keys.py
 src/__pycache__/api_keys.cpython-310.pyc
 src/api_keys.py
 src/__pycache__/
+src/.DS_Store
