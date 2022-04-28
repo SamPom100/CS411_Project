@@ -2,15 +2,61 @@
 <head>
 	<title>Search City</title>
 </head>
-<body>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
 
-	<h1>Welcome to yout Travel Planner App</h1>
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+.active {
+  background-color: #04AA6D;
+}
+ul {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+</style>
+<body>
+<img src="https://www.pngitem.com/pimgs/m/494-4946652_vacation-clipart-png-transparent-png.png" alt="vacay" style="width:850px;height:650px";>
+
+    <h1>Welcome to yout Travel Planner App</h1>
 
 	 <form method="post" enctype="multipart/form-data" action="/search">
 	 	<label for="city">Please enter your destination: </label>
       <input type="text" name="city" /> 
       <input type="submit"/>
 	 </form>
+     <ul>
+  <li><a href="#Friends">Friends</a></li>
+  <li><a href="#Trip">Trip</a></li>
+  <li><a href="#Weather">Weather</a></li>
+  <li style="float:right"><a class="active" href="#Search">Search</a></li>
+</ul>
     
 </body>
-</html>
+
+</html> 
+
+
+
