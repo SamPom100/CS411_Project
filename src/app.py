@@ -1,7 +1,7 @@
 # importing modules
 from flask import *
 from api_keys_public import *
-import flask, requests, flask_login, webbrowser
+import flask, requests, flask_login, webbrowser, url_for
 from flaskext.mysql import MySQL
 
 from methods import call_weather_api
