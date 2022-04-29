@@ -1,8 +1,10 @@
 # importing modules
 from flask import *
-from api_keys_public import *
+from api_keys import *
 import flask, requests, flask_login, webbrowser
 from flaskext.mysql import MySQL
+
+from methods import call_weather_api
 
 mysql = MySQL()
 app = Flask(__name__)
@@ -189,43 +191,12 @@ def weather():
 @app.route('/weather', methods = ['POST']) 
 def getWeather():
     if request.method == 'POST':
-        #get city name from html form
-        city = request.form.get('city')
-        
-        api_url = 'https://api.openweathermap.org/data/2.5/weather?q='
-
-        # Your API key
-        api_key = weather_key
-
-        # updating the URL
-        url = api_url + city + "&appid=" + api_key 
-
-        # Sending HTTP request
-        response = requests.get(url)
-
+        response = call_weather_api(request.form.get('city'))
     # checking the status code of the request
         if response.status_code == 200:
-                
-        # retrieving data in the json format
-            data = response.json()
-
-        # take the main dict block
-            main = data["main"]
-            
-        # getting city
-            city = data["name"]
-            
-        # getting temperature
-            temperature = main["temp"]
-            
-        # getting feel like
-            feels_like = main["feels_like"]  
-           
-            return render_template('weather_ret.html', city = city, temperature = temperature, feels_like = feels_like)
+            return render_template('weather_ret.html', city = request.form.get('city'), temperature = response.json()['main']['temp'], feels_like = response.json()['main']['feels_like'])
         else:
-
         # showing the error message
-            
             return render_template('weather.html')
 
 
