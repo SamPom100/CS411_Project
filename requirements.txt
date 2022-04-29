@@ -1,4 +1,0 @@
-Flask==2.0.3
-Flask_Bcrypt==1.0.1
-Flask_Login==0.6.0
-requests==2.27.1

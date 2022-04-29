@@ -1,19 +1,15 @@
 # importing modules
-import flask
-from flask import Flask, Response, request, render_template, redirect, url_for, jsonify
-import requests
+from flask import *
+from api_keys_public import *
+import flask, requests, flask_login, webbrowser
 from flaskext.mysql import MySQL
-import flask_login
-from api_keys_public import google_maps_key, weather_key
-import os
-
 
 mysql = MySQL()
 app = Flask(__name__)
-app.secret_key = 'super secret string'  # Change this!
+app.secret_key = flask_app_secret
 
 app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'Salo5561!'
+app.config['MYSQL_DATABASE_PASSWORD'] = my_sql_database_key
 app.config['MYSQL_DATABASE_DB'] = 'travel_planner'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql.init_app(app)
@@ -247,4 +243,5 @@ def hello_world():
 
 # run the flask app from Python file running
 if __name__ == "__main__":
-    app.run(port=5000, debug=True)
+	webbrowser.open_new('http://127.0.0.1:5000/')
+	app.run(port=5000, debug=True)
