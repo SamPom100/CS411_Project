@@ -72,3 +72,4 @@ CREATE TABLE liked_act
 );
 
 
+INSERT INTO users (email, password, first_name, last_name) VALUES ('s@bu.edu', '123456', 'Sharon', 'Mizrahi');
