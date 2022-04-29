@@ -1,6 +1,6 @@
 import requests
 import json
-from api_keys import google_maps_key, weather_key
+from api_keys_public import google_maps_key, weather_key
 
 def call_weather_api(location: str):
   api_url = 'https://api.openweathermap.org/data/2.5/weather?q='+location+'&APPID='+weather_key+'&units=imperial'
