@@ -1,6 +1,6 @@
 # importing modules
 from flask import *
-from api_keys import *
+from api_keys_public import *
 import flask, requests, flask_login, webbrowser
 from flaskext.mysql import MySQL
 
@@ -197,7 +197,7 @@ def getWeather():
             return render_template('weather_ret.html', city = request.form.get('city'), temperature = response.json()['main']['temp'], feels_like = response.json()['main']['feels_like'])
         else:
         # showing the error message
-            return render_template('weather.html')
+            return render_template('weather.html') + "<h3 style = \"color: #ff0000\">An error occured loading up the city provided</h3>\""
 
 
 
