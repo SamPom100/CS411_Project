@@ -58,6 +58,81 @@ def request_loader(request):
 	user.is_authenticated = request.form['password'] == pwd
 	return user
 
+#LOGIN WITH GOOGLE AUTH
+
+client_id_google = "960723240351-kqr9g1smm47lo8o0th1kq6sjptojdblq.apps.googleusercontent.com"
+
+from google_auth_oauthlib.flow import Flow
+import pathlib
+import os
+import pip._vendor.cachecontrol as cachecontrol
+import google
+import google.oauth2.id_token as id_token
+
+os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
+
+client_secret_file = os.path.join(pathlib.Path(__file__).parent, "client_secret_google.json")
+
+flow = Flow.from_client_secrets_file(
+	client_secrets_file = client_secret_file, 
+	scopes = ["https://www.googleapis.com/auth/userinfo.profile","https://www.googleapis.com/auth/userinfo.email", "openid"],
+	redirect_uri = "127.0.0.1:5000/callback"
+)
+
+def require_login(function):
+	def wrapper(*args, **kwargs):
+		if "google_id" not in session:
+			return abort(401) # Login is needed
+		else:
+			return function()
+		return wrapper()
+
+
+@app.route('/google_login')
+def google_login():
+	auth_url, state = flow.authorization_url()
+	session["state"] = state
+	return redirect(auth_url)
+
+@app.route('/callback')
+def callback():
+	flow.fetch_token(authorization_response=request.url)
+	if not session[state] == request.args["state"]:
+		abort(500)
+	
+	creds = flow.credentials
+	request_sess = request.session()
+	cached_sess = cachecontrol.CacheControl(request_sess)
+	token_req = google.auth.transport.requests.Request(session=cached_sess)
+
+	id_data = id_token.verify_oauth2_token(
+		id_token = creds._id_token,
+		request = token_req,
+		audience = client_id_google
+	)
+
+	session["google_id"] = id_data.get("sub")
+	session["name"] = id_data.get("name")
+	return redirect("/protected_area")
+
+
+@app.route('/google_logout')
+def google_logout():
+	session.clear()
+	return redirect("/")
+
+@app.route('/google_login')
+def index():
+	session["google_id"] = "Test"
+	return flask.redirect("/protected_area")
+
+@require_login
+@app.route('/protected_area')
+def protected_area():
+	return "<h1> Hi </h1>"
+
+
+
 #LOGIN WITHOUT GOOGLE AOTH
 @app.route('/register', methods=['GET', 'POST'])
 def login():
