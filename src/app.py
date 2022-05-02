@@ -230,7 +230,7 @@ def CityPlans():
 		try:
 			response = call_map_api(request.form.get('city'))
 			response = response[1]
-			return render_template('destination.html', city = response['name'], address = response['address'], rating = response['rating'], category = str(response['category']))
+			return render_template('destination.html', city = request.form.get('city'), funTodo = response['name'], address = response['address'], rating = response['rating'], category = str(response['category']))
 		except:
         	# showing the error message
 			return render_template('search.html')

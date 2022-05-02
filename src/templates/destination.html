@@ -114,6 +114,10 @@ span.psw {
 
     <h1>This to do in {{city}}</h1>
     
+    {% if funTodo%}
+      <h2>Fun thing to do: {{funTodo}}</h2>
+    {% endif %}
+
     {% if address%}
       <h2>Address: {{address}}</h2>
     {% endif %}
