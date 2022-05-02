@@ -7,7 +7,6 @@ CREATE TABLE users (
     password varchar(255) NOT NULL,
     first_name	varchar(255) NOT NULL,
     last_name	varchar(255) NOT NULL,
-    dob	date NOT NULL,
     PRIMARY KEY (user_id)
 );
 
