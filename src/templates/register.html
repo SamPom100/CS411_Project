@@ -112,49 +112,28 @@ span.psw {
 <body>
 <img src="https://www.pngitem.com/pimgs/m/494-4946652_vacation-clipart-png-transparent-png.png" alt="vacay" style="width:150px;height:150px";>
 
-    <h1>Login to plan your experience!</h1>
-
-  <div class="imgcontainer">
-  
-  </div>
+    <h1>Register to plan your experience!</h1>
 
   <div class="container">
-    <form action="" method='POST'>
-
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter email" name="email" id="email" required></input>
-
-    <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" id="password" required></input>
-
-    <button type="submit" name="Login"> Login </input></button>
-
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
-  </div>
-    </form>
-
-    <div class="title">
-    <h1>Not a user yet? create an account!</h1>
     <h3>Please enter your information below</h3>
     </div>
     
     <div class="container">
 
-        <form method="POST" action="{{ url_for('register_user') }}">
+      <form action="{{ url_for('register') }}" method="POST">
+        <div class="msg">{{ msg }}</div> <p class="bottom"> Login  <a class="bottom" href="{{url_for('login')}}"> Login</a></p>
 
         <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter email" name="email"></input>
+        <input id = 'email' name = 'email' type = 'text' placeholder="Enter Your Email" class = 'textbox'/></br></br>
     
         <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter password" name="password" ></input>
+        <input id = 'password' name = 'password' type = 'text' placeholder="Enter Your Password" class = 'textbox'/></br></br>
       
         <label for="first_name"><b>Name</b></label>
-        <input type="text" placeholder="Enter first name" name="first_name" ></input>
+        <input id = 'first_name' name = 'first_name' type = 'text' placeholder="Enter Your Firstname" class = 'textbox'/></br></br>
 
         <label for="last_name"><b>Lastname</b></label>
-        <input type="text" placeholder="Enter lastname" name="last_name" ></input>
+        <input id = 'last_name' name = 'last_name' type = 'text' placeholder="Enter Your Last Name" class = 'textbox'/></br></br>
     
          <br>
         <button type="submit"> Sign Up! </input></button>

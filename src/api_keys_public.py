@@ -4,7 +4,7 @@ google_maps_key = "no key :)"
 
 weather_key = "no key :)"
 
-my_sql_database_key = 'database password'
+my_sql_database_key = 'secret passcode'
 
 flask_app_secret = 'super secret!'
 

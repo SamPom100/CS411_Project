@@ -110,25 +110,49 @@ span.psw {
 
 </style>
 <body>
+<img src="https://www.pngitem.com/pimgs/m/494-4946652_vacation-clipart-png-transparent-png.png" alt="vacay" style="width:150px;height:150px";>
 
-    <img src="https://www.pngitem.com/pimgs/m/494-4946652_vacation-clipart-png-transparent-png.png" alt="vacay" style="width:150px;height:150px";>     
+    <h1>Login to plan your experience!</h1>
 
-  <h1>Welcome to your Travel Planner App</h1>
-  <h2>To plan your next trip please <a href='/login'> Login </a></h1>
-  <h2>Do not have an account? please <a href='/register'> Register </a></h1>
-
-     
-    <ul>
-      <li><a href="/friends">Friends</a></li>
-      <li><a href="/trip">Trips</a></li>
-      <li><a href="/weather">Weather</a></li>
-      <li><a href="/register">Sign In</a></li>
-      <li><a href="/google_login">Google Sign In</a></li>
-      <li><a href="/google_logout">Google Sign Out</a></li>
-      <li style="float:right"><a class="active" href="/search">Travel Search</a></li>
+  <div class="imgcontainer">
   
+  </div>
+
+  <div class="container">
+    <form action="" method='POST'>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter email" name="email" id="email" required></input>
+
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" id="password" required></input>
+
+    <button type="submit" name="Login"> Login </input></button>
+
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+    </form>
+
+    <div class="title">
+        <p class="bottom">Dont't have an account?  <a class="bottom" href="{{url_for('register')}}"> Sign Up here</a></p>
+    </div>
+    
+    
+
+  <div class="container" style="background-color:#f1f1f1">
+  </div>
+     
+  <ul>
+    <li><a href="/friends">Friends</a></li>
+    <li><a href="/trip">Trips</a></li>
+    <li><a href="/weather">Weather</a></li>
+    <li style="float:right"><a class="active" href="/search">Travel Search</a></li>
+
 </ul>
     
 </body>
 
 </html> 
+
