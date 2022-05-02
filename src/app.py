@@ -1,11 +1,10 @@
 # importing modules
 from flask import *
 from api_keys_public import *
+from methods import *
 import flask, requests, flask_login, webbrowser
 from flaskext.mysql import MySQL
 import re
-
-from methods import call_weather_api
 
 mysql = MySQL()
 app = Flask(__name__)
@@ -228,42 +227,13 @@ def search():
 @flask_login.login_required 
 def CityPlans():
         #get city name from html form
-        city = request.form.get('city')
-        
-        api_url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query='
-
-        # Your API key
-        api_key = google_maps_key
-
-        # updating the URL
-        url = api_url + ("fun things to do in "+ city) + "&key=" + api_key 
-
-        # Sending HTTP request
-        response = requests.get(url)
-
-    # checking the status code of the request
-        if response.status_code == 200:
-                
-        # retrieving data in the json format
-            data = response.json()
-
-        # take the main dict block
-            main = data["main"]
-
-            city = data["name"]
-
-            address = main["formatted_address"]
-
-            rating = main["rating"]  
-
-            category = main["types"] 
-           
-            return render_template('destination.html', city = city, address = address, rating = rating, category = category)
-        else:
-
-        # showing the error message
-            
-            return render_template('search.html')
+		try:
+			response = call_map_api(request.form.get('city'))
+			response = response[1]
+			return render_template('destination.html', city = response['name'], address = response['address'], rating = response['rating'], category = str(response['category']))
+		except:
+        	# showing the error message
+			return render_template('search.html')
 
 # Weather API
 @app.route("/weather", methods=['GET'])
@@ -296,5 +266,5 @@ def hello_world():
 
 # run the flask app from Python file running
 if __name__ == "__main__":
-	# webbrowser.open_new('http://127.0.0.1:5000/')
+	webbrowser.open_new('http://127.0.0.1:5000/')
 	app.run(port=5000, debug=True)

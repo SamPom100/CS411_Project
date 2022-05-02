@@ -17,7 +17,7 @@ def call_map_api(location: str):
         returnDict['rating'] = entry['rating']
         returnDict['category'] = entry['types']
         returnList.append(returnDict)
-    return json.dumps(returnList, indent = 4)
+    return json.loads(json.dumps(returnList))
 
 def call_travel_api(location: str):
     URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+("hotels in "+ location)+"&key="+google_maps_key
@@ -30,10 +30,6 @@ def call_travel_api(location: str):
         returnDict['rating'] = entry['rating']
         returnDict['category'] = entry['types']
         returnList.append(returnDict)
-    return json.dumps(returnList, indent = 4)
-
-
-
-
+    return json.loads(json.dumps(returnList))
 
 
