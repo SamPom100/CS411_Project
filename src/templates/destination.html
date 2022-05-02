@@ -3,6 +3,15 @@
 	<title>Home</title>
 </head>
 <style>
+body {
+  background: url("https://i.postimg.cc/zfvmB1R6/website-bkg.png") no-repeat left bottom fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -112,7 +121,7 @@ span.psw {
 <body>
 <img src="https://www.pngitem.com/pimgs/m/494-4946652_vacation-clipart-png-transparent-png.png" alt="vacay" style="width:150px;height:150px";>
 
-    <h1>This to do in {{city}}</h1>
+    <h1>Things to do in {{city}}</h1>
     
     {% if funTodo%}
       <h2>Fun thing to do: {{funTodo}}</h2>

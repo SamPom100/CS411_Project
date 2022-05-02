@@ -209,7 +209,7 @@ def isEmailUnique(email):
 	else:
 		return True
 
-@require_google_login or flask_login.login_required
+@require_google_login
 @app.route("/profile")
 def protected():
 	try:
