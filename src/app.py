@@ -60,7 +60,7 @@ def request_loader(request):
 
 #LOGIN WITH GOOGLE AUTH
 
-client_id_google = "960723240351-kqr9g1smm47lo8o0th1kq6sjptojdblq.apps.googleusercontent.com"
+client_id_google = google_id
 
 from google_auth_oauthlib.flow import Flow
 import pathlib
