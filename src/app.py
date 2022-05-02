@@ -76,10 +76,10 @@ client_secret_file = os.path.join(pathlib.Path(__file__).parent, "client_secret_
 flow = Flow.from_client_secrets_file(
 	client_secrets_file = client_secret_file, 
 	scopes = ["https://www.googleapis.com/auth/userinfo.profile","https://www.googleapis.com/auth/userinfo.email", "openid"],
-	redirect_uri = "127.0.0.1:5000/callback"
+	redirect_uri = "http://127.0.0.1:5000/callback"
 )
 
-def require_login(function):
+def require_google_login(function):
 	def wrapper(*args, **kwargs):
 		if "google_id" not in session:
 			return abort(401) # Login is needed
@@ -97,11 +97,11 @@ def google_login():
 @app.route('/callback')
 def callback():
 	flow.fetch_token(authorization_response=request.url)
-	if not session['state'] == request.args["state"]:
+	if not session["state"] == request.args["state"]:
 		abort(500)
 	
 	creds = flow.credentials
-	request_sess = request.session()
+	request_sess = requests.session()
 	cached_sess = cachecontrol.CacheControl(request_sess)
 	token_req = google.auth.transport.requests.Request(session=cached_sess)
 
@@ -113,6 +113,7 @@ def callback():
 
 	session["google_id"] = id_data.get("sub")
 	session["name"] = id_data.get("name")
+
 	return redirect("/protected_area")
 
 
@@ -126,10 +127,10 @@ def index():
 	session["google_id"] = "Test"
 	return flask.redirect("/protected_area")
 
-@require_login
+@require_google_login
 @app.route('/protected_area')
 def protected_area():
-	return "<h1> Hi </h1>"
+	return redirect("/")
 
 
 
@@ -208,12 +209,13 @@ def isEmailUnique(email):
 	else:
 		return True
 
-
+@require_google_login or flask_login.login_required
 @app.route("/profile")
-@flask_login.login_required
 def protected():
-	return render_template('profile.html', name=flask_login.current_user.id)
-
+	try:
+		return render_template('profile.html', name=flask_login.current_user.id)
+	except:
+		return render_template("profile.html", name=session["name"])
 # This method executes before any API request
 @app.before_request
 def before_request():
@@ -233,7 +235,7 @@ def CityPlans():
 			return render_template('destination.html', city = request.form.get('city'), funTodo = response['name'], address = response['address'], rating = response['rating'], category = str(response['category']))
 		except:
         	# showing the error message
-			return render_template('search.html')
+			return render_template('search.html') + "<h3 style = \"color: #ff0000\">An error occured loading up travel recommendations for the city provided</h3>"
 
 # Weather API
 @app.route("/weather", methods=['GET'])
@@ -249,7 +251,7 @@ def getWeather():
             return render_template('weather_ret.html', city = request.form.get('city'), temperature = response.json()['main']['temp'], feels_like = response.json()['main']['feels_like'])
         else:
         # showing the error message
-            return render_template('weather.html') + "<h3 style = \"color: #ff0000\">An error occured loading up the city provided</h3>\""
+            return render_template('weather.html') + "<h3 style = \"color: #ff0000\">An error occured loading up the weather for the city provided</h3>"
 
 
 
@@ -262,7 +264,10 @@ def friends():
 #http://127.0.0.1:5000/ the default return value
 @app.route("/")
 def hello_world():
-  return render_template('home.html')
+	try: #check if google logined
+		return render_template('profile.html') + "<h1 style = \"color: #0000ff\"> "+ f"Welcome {session['name']}!" + "</h1>"
+	except:
+		return render_template('home.html') + "<h1 style = \"color: #ff0000\"> You need to log in! </h1>"
 
 # run the flask app from Python file running
 if __name__ == "__main__":
