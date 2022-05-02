@@ -152,7 +152,7 @@ def login():
 			return flask.redirect(flask.url_for('protected')) #protected is a function defined in this file
 
 	#information did not match
-	return render_template('login.html')
+	return render_template('unauth.html')
 
 @app.route('/logout')
 def logout():
@@ -190,6 +190,7 @@ def register():
 			cursor.execute("INSERT INTO Users (email, password, first_name, last_name) VALUES ('{0}', '{1}', '{2}', '{3}')".format(email, password, first_name, last_name))
 			conn.commit()
 			msg = 'You have successfully registered !'
+		return render_template('profile.html', name=email, msg = msg)
 
 	elif request.method == 'POST':
 		msg = 'Please fill out the form !'
