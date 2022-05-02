@@ -5,3 +5,4 @@ src/api_keys.py
 src/__pycache__/
 src/.DS_Store
 .DS_Store
+src/client_secret_google.json
