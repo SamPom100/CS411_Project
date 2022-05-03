@@ -13,6 +13,7 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -122,29 +123,27 @@ span.psw {
 <body>
 <img src="https://www.teahub.io/photos/full/90-901827_travel-desktop-wallpaper-clip-art-travel-clipart-png.png" alt="vacay" style="width:500px;height:190px";>
 
-    <h1>Weather in {{city}}</h1>
-    
-    {% if temperature%}
-      <h2>Temperature: {{temperature}}</h2>
-    {% endif %}
+    <h1>Weather</h1>
+    <h3>Please enter your destination to learn about the weather in the area</h3>
 
-    {% if feels_like%}
-      <h2>Feels Like: {{feels_like}}</h2>
-    {% endif %}
+	 <form method="post" enctype="multipart/form-data" action="/weather">
+	 	<label for="city">Please enter city: </label>
+      <input type="text" name="city" /> 
+      <button type="submit" href="/weather_ret"> Search! </input></button>
+      
+  <div class="imgcontainer">
+  
+  </div>
 
-    <div class="imgcontainer">
-  
-    </div>
-  
-    <ul>
-      <li><a href="/profile">Profile</a></li>
-      <li><a href="/logout">Sign Out</a></li>
-        <li style="float:right"><a class="active" href="/weather">Weather</a></li>
-        <li style="float:right"><a class="active" href="/search">Travel Search</a></li>
-  
-  </ul>
-        
-    </body>
-    
-    </html> 
+  <ul>
+    <li><a href="/profile">Profile</a></li>
+    <li><a href="/logout">Sign Out</a></li>
+    <li><a href="/google_logout">Google Sign Out</a></li>
+      <li style="float:right"><a class="active" href="/weather">Weather</a></li>
+      <li style="float:right"><a class="active" href="/search">Travel Search</a></li>
 
+</ul>
+      
+  </body>
+  
+  </html> 
