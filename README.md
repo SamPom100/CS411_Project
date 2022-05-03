@@ -8,7 +8,8 @@ Lab A5 Team 3's Group Project for BU CS411
 | 1             |  ✅           |   Project Ideas  | 
 | 2             |  ✅           |    User Stories  | 
 | 3             |  ✅           |  Pick a Framework   | 
-| 4             |  in progress          |  Get Stuff Working  | 
+| 4             |  ✅          |  Get Stuff Working  | 
+| 5             |  ✅          |  Finish Documentation  | 
 
 
 ## Project Requirements ☑
