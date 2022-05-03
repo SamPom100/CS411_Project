@@ -25,5 +25,8 @@ Our group's detailed project timeline can be found [here](https://github.com/Sam
 ## Demo Movie 🎬
 
 
-https://user-images.githubusercontent.com/28206070/166402270-cd554684-40b2-4e8d-aa70-c5c61305e3ab.mp4
+https://user-images.githubusercontent.com/28206070/166410169-e8451453-f7f6-4ae9-b37b-9b3f43393257.mp4
+
+
+
 
