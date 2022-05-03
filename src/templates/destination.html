@@ -123,21 +123,17 @@ span.psw {
 
     <h1>Things to do in {{city}}</h1>
     
-    {% if funTodo%}
-      <h2>Fun thing to do: {{funTodo}}</h2>
-    {% endif %}
-
-    {% if address%}
-      <h2>Address: {{address}}</h2>
-    {% endif %}
-
-    {% if rating%}
-      <h2>Rating: {{rating}}</h2>
-    {% endif %}
-
-    {% if category%}
-      <h2>Category: {{category}}</h2>
-    {% endif %}
+    {% for item in responseThing %}
+    <tr>
+      <h2>{{item['name']}}</h2>
+      <h3> Address: {{item['address']}}</h3>
+      <h3> Rating: {{item['rating']}}</h3>
+      <h3> Category: {{item['category']}}</h3>
+      <p><br><br></p>
+    </tr>
+    <p><br><br></p>
+  {% endfor %}
+  
 
     <div class="imgcontainer">
     </div>

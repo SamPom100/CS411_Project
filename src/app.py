@@ -1,6 +1,6 @@
 # importing modules
 from flask import *
-from api_keys_public import *
+from api_keys import *
 from methods import *
 import flask, requests, flask_login, webbrowser
 from flaskext.mysql import MySQL
@@ -230,9 +230,9 @@ def search():
 def CityPlans():
         #get city name from html form
 		try:
+			print("HERE")
 			response = call_map_api(request.form.get('city'))
-			response = response[1]
-			return render_template('destination.html', city = request.form.get('city'), funTodo = response['name'], address = response['address'], rating = response['rating'], category = str(response['category']))
+			return render_template('destination.html', city = request.form.get('city'), responseThing = response)
 		except:
         	# showing the error message
 			return render_template('search.html') + "<h3 style = \"color: #ff0000\">An error occured loading up travel recommendations for the city provided</h3>"
@@ -271,5 +271,5 @@ def hello_world():
 
 # run the flask app from Python file running
 if __name__ == "__main__":
-	# webbrowser.open_new('http://127.0.0.1:5000/')
+	webbrowser.open_new('http://127.0.0.1:5000/')
 	app.run(port=5000, debug=True)
