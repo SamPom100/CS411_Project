@@ -15,7 +15,10 @@ def call_map_api(location: str):
         returnDict['name'] = entry['name']
         returnDict['address'] = entry['formatted_address']
         returnDict['rating'] = entry['rating']
-        returnDict['category'] = entry['types']
+        tmpStr = ""
+        for x in entry['types']:
+            tmpStr += x + ", "
+        returnDict['category'] = tmpStr.replace("_"," ")[:-2]
         returnList.append(returnDict)
     return json.loads(json.dumps(returnList))
 

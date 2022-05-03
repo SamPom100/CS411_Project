@@ -272,4 +272,4 @@ def hello_world():
 # run the flask app from Python file running
 if __name__ == "__main__":
 	webbrowser.open_new('http://127.0.0.1:5000/')
-	app.run(port=5000, debug=True)
+	app.run(port=5000, debug=True, use_reloader=False)
