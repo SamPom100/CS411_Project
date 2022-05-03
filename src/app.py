@@ -27,7 +27,7 @@ login_manager.init_app(app)
 
 
 def create_database():
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('src/database.db')
     c = conn.cursor()
     c.execute("""
         CREATE TABLE users (
@@ -43,12 +43,12 @@ def create_database():
 
 
 def setUp_database():
-    if not os.path.isfile('database.db'):
+    if not os.path.isfile('src/database.db'):
         create_database()
 
 
 setUp_database()
-conn = sqlite3.connect('database.db', check_same_thread=False)
+conn = sqlite3.connect('src/database.db', check_same_thread=False)
 cursor = conn.cursor()
 cursor.execute("SELECT email FROM users")
 users = cursor.fetchall()
@@ -83,7 +83,7 @@ def request_loader(request):
             return
         user = User()
         user.id = email
-        conn = sqlite3.connect('database.db', check_same_thread=False)
+        conn = sqlite3.connect('src/database.db', check_same_thread=False)
         cursor = conn.cursor()
         cursor.execute(
             "SELECT password FROM users WHERE email = '{0}'".format(email))
@@ -177,7 +177,7 @@ def login():
         return render_template('login.html')
 
     email = flask.request.form['email']
-    conn = sqlite3.connect('database.db', check_same_thread=False)
+    conn = sqlite3.connect('src/database.db', check_same_thread=False)
     cursor = conn.cursor()
     # CHECK IF EMAIL EXISTS FIRST
     cursor.execute("SELECT email FROM users")
@@ -205,6 +205,7 @@ def login():
 
 @app.route('/logout')
 def logout():
+    session.clear()
     flask_login.logout_user()
     return render_template('home.html')
 
@@ -224,7 +225,7 @@ def register():
         password = request.form.get('password')
         first_name = request.form.get('first_name')
         last_name = request.form.get('last_name')
-        conn = sqlite3.connect('database.db', check_same_thread=False)
+        conn = sqlite3.connect('src/database.db', check_same_thread=False)
         cursor = conn.cursor()
         cursor.execute(
             "SELECT user_id FROM users WHERE email = '{0}'".format(email))
