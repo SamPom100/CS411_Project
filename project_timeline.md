@@ -41,6 +41,12 @@ To start the project, we proposed the architecture located in [`Assignments/Assi
     3. Have a google log-in
     4. Have a normal, flask-integrated log-in system
 
+### *Original Project Deliverables*
+* Inititally we planned on delivering the following items along with our current application:
+    1. The ability to save travel information to your profile 
+    2. The ability to add friends and collaborate on planning trips together
+    3. Syncing travel plans to google calendar 
+
 ### *Back-end implementation*
 
 * We began to implement the back-end using Flask; however, we’ve decided to not proceed with Django with a vote.
