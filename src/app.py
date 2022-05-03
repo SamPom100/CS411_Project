@@ -185,8 +185,6 @@ def login():
     checkEmail = flask.request.form['email']
     for x in rows:
         formatX = str(x)[2:-3]
-        print(checkEmail)
-        print(formatX)
         if checkEmail == formatX:
             # check if email is registered
             if cursor.execute("SELECT password FROM users WHERE email = '{0}'".format(email)):
