@@ -77,7 +77,7 @@ In our project, we used the following APIs:
 
 * Flask - this software is responsible for our back-end completely, using it to fetch payloads, call APIs, and manage our database. For example, we used flask to call weather and hotel information apis.
 * SQL - We made an SQL table to manage users, friends, desired destinations, and vacation plans. We also planned working with adding friends and setting vacation plans before realizing our project scope was too large given our timeframe.
-* Python - the main code to run our web application is a python file and we have also removed the SQL table and incorporated them into python files to run our application
+* Python - the Flask back-end of our app is written in Python. The app's database is also made and managed by SQLite directly in Python (replacing the previous dependancy on workbench).
 
 
 
